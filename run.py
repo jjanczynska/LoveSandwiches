@@ -76,7 +76,7 @@ def calculate_surplus_data(sales_row):
     print("Calculating surplus data...\n")
     stock = SHEET.worksheet("stock").get_all_values()
     stock_row = stock[-1]
-    
+
     surplus_data = []
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
@@ -129,23 +129,7 @@ def main():
     sales_columns = get_last_5_entries_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
-    return stock_data
 
 
-print("Welcome to Love Sandwiches Data Automation.\n")
-stock_data = main()
-
-def get_stock_values(data):
-    """
-    Print out the calculated stock numbers for each sandwich type.
-    """
-    headings = SHEET.worksheet("stock").get_all_values()[0]
-
-    # headings = SHEET.worksheet('stock').row_values(1)
-
-    print("Make the following numbers of sandwiches for next market:\n")
-
-    # new_data = {}
-    # for heading, stock_num in zip(headings, data):
-    #     new_data[heading] = stock_num
-    # return new_data
+print("Welcome to Love Sandwiches Data Automation")
+main()
